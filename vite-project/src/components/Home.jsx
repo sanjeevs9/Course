@@ -3,14 +3,19 @@ import Sidebar from './Sidebar';
 import CourseCard from './CourseCard';
 import { useState } from 'react';
 import './Home.css';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+<<<<<<< HEAD
   const [category, setCategory] = useState('');
 
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
   };
 
+=======
+  const navigate =useNavigate();
+>>>>>>> ce0c11bedabea61d334ffe58a66722ba2f9f5fc6
   const courses = [
     {
       title: 'Cinematic Techniques',
@@ -84,7 +89,7 @@ function Home() {
       <div className="content">
         <div className="header">
           <input type="text" placeholder="Search for a course" />
-          <button>Teacher mode</button>
+          <button onClick={()=>{navigate("/course")}}>Teacher mode</button>
         </div>
         <div className="catalog">
           <button onClick={()=>{setCategory("Filming")}}>Filming</button>
