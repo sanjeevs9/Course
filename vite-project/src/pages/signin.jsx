@@ -12,12 +12,7 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { checktoken, signin } from "../../route";
-import { useDispatch } from "react-redux";
-import { setLoading ,setUser} from "../features/userinfo/userinfoSlice";
-import { toast } from "react-toastify";
 
 function Copyright(props) {
   return (
@@ -40,28 +35,26 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const validatetoken = async () => {
-      const token = localStorage.getItem("authorization");
-      if(!token){
-        return;
-      }
-      const { data } = await axios.post(
-        checktoken,
-        {},
-        { headers: { authorization: token } }
-      );
+//   useEffect(() => {
+//     const validatetoken = async () => {
+//       const token = localStorage.getItem("authorization");
+//       if(!token){
+//         return;
+//       }
+//       const { data } = await axios.post(
+//         checktoken,
+//         {},
+//         { headers: { authorization: token } }
+//       );
 
-      if (data.status) {
-        navigate("/post");
-        return;
-      }
-    };
-    validatetoken();
-  }, []);
+//       if (data.status) {
+//         navigate("/post");
+//         return;
+//       }
+//     };
+//     validatetoken();
+//   }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -71,16 +64,16 @@ export default function SignInSide() {
       password: form.get("password"),
     };
 
-    const { data } = await axios.post(signin, infromation);
-    if (data.status) {
-      const userData = data.user;
-      dispatch(setUser(userData));
-      localStorage.setItem("authorization", `Bearer ${data.token}`);
-      navigate("/post");
-      toast.success("Logged in ")
-    }else{
-      toast.error("Cannot logged in ")
-    }
+    // const { data } = await axios.post(signin, infromation);
+    // if (data.status) {
+    //   const userData = data.user;
+    //   dispatch(setUser(userData));
+    //   localStorage.setItem("authorization", `Bearer ${data.token}`);
+    //   navigate("/post");
+    //   toast.success("Logged in ")
+    // }else{
+    //   toast.error("Cannot logged in ")
+    // }
   
   };
 
