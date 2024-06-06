@@ -10,7 +10,7 @@ function Home() {
   const courses = [
     {
       title: 'Cinematic Techniques',
-      category: 'Filming',
+      category: 'Coding',
       progress: 100,
       price: 96,
       image: 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200214170056/Web-Thumbnail.jpg',
@@ -18,7 +18,7 @@ function Home() {
     },
     {
       title: 'Introduction to Filming',
-      category: 'Filming',
+      category: 'Coding',
       progress: 92,
       price: 96,
       image: 'https://images.unsplash.com/photo-1507461278961-3437e7963a5e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60',
@@ -83,7 +83,7 @@ function Home() {
           <button onClick={()=>{navigate("/course")}}>Teacher mode</button>
         </div>
         <div className="catalog">
-          <button onClick={()=>{setCategory("Filming")}}>Filming</button>
+          <button onClick={()=>{setCategory("Coding")}}>Filming</button>
           <button onClick={()=>{setCategory("Engineering")}}>Engineering</button>
           <button onClick={()=>{setCategory("Accounting")}}>Accounting</button>
           <button onClick={()=>{setCategory("Photography")}}>Photography</button>

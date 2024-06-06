@@ -104,6 +104,8 @@ body, html {
 
   .catalog button {
     width: 100%;
+    font-size: smaller;
+    padding: 8px;
   }
 
   .course-grid {
