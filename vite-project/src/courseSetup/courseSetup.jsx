@@ -4,9 +4,8 @@ import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import SideBar from './SideBar';
 import { useNavigate } from 'react-router-dom';
-import Mux from 
 
-function CourseSetupForm() {
+ function CourseSetupForm() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
