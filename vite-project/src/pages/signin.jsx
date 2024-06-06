@@ -13,6 +13,10 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
+import { login } from "../../route";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setUser } from "../features/userinfoSlice";
 
 function Copyright(props) {
   return (
@@ -35,6 +39,9 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
 //   useEffect(() => {
 //     const validatetoken = async () => {
@@ -60,9 +67,23 @@ export default function SignInSide() {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     const infromation = {
-      username: form.get("username"),
+      email: form.get("email"),
       password: form.get("password"),
     };
+
+    const { data } = await axios.post(login, infromation);
+
+    console.log(data);
+    if (data) {
+      const token = data.token;
+      localStorage.setItem("authorization",token)
+      const userData = data.user;
+      dispatch(setUser(userData));
+      localStorage.setItem("authorization", ` Bearer ${token}`);
+      navigate("/");
+    }
+
+
 
     // const { data } = await axios.post(signin, infromation);
     // if (data.status) {
@@ -124,10 +145,10 @@ export default function SignInSide() {
                 margin="normal"
                 required
                 fullWidth
-                id="username"
-                label="username"
-                name="username"
-                autoComplete="username"
+                id="email"
+                label="email"
+                name="email"
+                autoComplete="email"
                 autoFocus
               />
               <TextField
