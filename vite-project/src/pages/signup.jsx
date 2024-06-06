@@ -11,6 +11,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setUser } from "../features/userinfoSlice";
+import { useNavigate } from "react-router-dom";
+import { register } from "../../route";
 
 function Copyright(props) {
   return (
@@ -35,6 +39,9 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
   const [role, setrole] = useState("");
   const [activeButton, setActiveButton] = useState(null);
 
@@ -49,25 +56,23 @@ export default function SignUp() {
     const userdata = {
       email: form.get("email"),
       password: form.get("password"),
-      username: form.get("username"),
+      name: form.get("username"),
       phone: form.get("phone"),
       role : role
     };
 
 
-    console.log(userdata);
+    const { data } = await axios.post(register, userdata);
 
-    // const { data } = await axios.post(signup, userdata);
-    // if (data) {
-    //   const token = data.token;
-    //   const userData = data.user;
-    //   dispatch(setUser(userData));
-    //   localStorage.setItem("authorization", ` Bearer ${token}`);
-    //   toast.success("Logged in successfully")
-    //   navigate("/post");
-    // }else{
-    //   toast.error("Logged Out")
-    // }
+    console.log(data);
+    if (data) {
+      const token = data.token;
+      localStorage.setItem("authorization",token)
+      const userData = data.user;
+      dispatch(setUser(userData));
+      localStorage.setItem("authorization", ` Bearer ${token}`);
+      navigate("/");
+    }
   };
 
   return (

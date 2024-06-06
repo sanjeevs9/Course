@@ -21,7 +21,7 @@ function App() {
       
         </Route>
         <Route path="/signin" element={<SignInSide />} /> 
-        <Route path="/login" element={<SignUp />} /> 
+        <Route path="/signup" element={<SignUp />} /> 
 
       </Routes>
     </BrowserRouter>
