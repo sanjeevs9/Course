@@ -6,16 +6,7 @@ import './Home.css';
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
-<<<<<<< HEAD
-  const [category, setCategory] = useState('');
-
-  const handleCategoryChange = (e) => {
-    setCategory(e.target.value);
-  };
-
-=======
   const navigate =useNavigate();
->>>>>>> ce0c11bedabea61d334ffe58a66722ba2f9f5fc6
   const courses = [
     {
       title: 'Cinematic Techniques',
