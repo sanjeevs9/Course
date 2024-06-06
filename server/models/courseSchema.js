@@ -17,6 +17,7 @@ const courseSchema = new mongoose.Schema({
     ImageUrl:{
         type:String,
         required:true
+    
     },
     createdAt: {
         type: Date,

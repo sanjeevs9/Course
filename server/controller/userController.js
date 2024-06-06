@@ -5,16 +5,12 @@ import { sendToken } from '../utils/jwtToken.js';
 
 export const register = catchAsyncErrors(async (req, res, next) => {
     const { name, email, phone, password, role } = req.body;
-    
-    if(!name||!email||!phone||!password||!role){
-        return next(new ErrorHandler("All Fields are Required!",400));
-    }
-    
+    console.log(req.body);
 
     let user = await User.findOne({ email });
 
     if (user) {
-        return next(new ErrorHandler("User Already Exists!",400));
+        return next(new ErrorHandler("User Already Exists!",406));
     }
 
     
@@ -24,8 +20,6 @@ export const register = catchAsyncErrors(async (req, res, next) => {
         phone,
         password,
         role
-        
-    
     });
 
     sendToken("User Registered Successfully!",user,res,200);
