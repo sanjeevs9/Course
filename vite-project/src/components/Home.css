@@ -1,0 +1,64 @@
+.app {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 98vw;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header input[type="text"] {
+  width: 200px;
+  height: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+.header button {
+  margin-left: 10px;
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.header button:hover {
+  background-color: #23527c;
+}
+
+hr{
+  margin : 16px 0;
+}
+
+.catalog {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.catalog a {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #337ab7;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
