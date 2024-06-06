@@ -5,7 +5,7 @@ import cors from 'cors';
 import {dbConnection} from './database/databaseConnection.js';
 import fileUpload from 'express-fileupload';
 import {ErrorMiddleWare} from "./middlewares/error.js"
-
+import userRouter from "./routes/userRouter.js"
 
 
 
@@ -23,6 +23,8 @@ app.use(cors({
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+
+app.use("/api/v1/user",userRouter);
 
 dbConnection();
 

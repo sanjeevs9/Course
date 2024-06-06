@@ -1,40 +1,54 @@
 import { catchAsyncErrors } from '../middlewares/catchAsyncErrors.js'
-import User from '../models/userSchema.js'
+import {User} from '../models/userSchema.js'
+import ErrorHandler from '../middlewares/error.js';
+import { sendToken } from '../utils/jwtToken.js';
 
 export const register = catchAsyncErrors(async (req, res, next) => {
     const { name, email, phone, password, role } = req.body;
+    
+    // if(!name||!email||!phone||!password||!role){
+    //     return next(new ErrorHandler("All Fields are Required!",400));
+    // }
 
-    const userExists = await User.findOne({ email });
+    let user = await User.findOne({ email });
 
-    if (userExists) {
-        return res.status(400).json({ message: 'User already exists' });
+    if (user) {
+        return next(new ErrorHandler("User Already Exists!",400));
     }
 
-    const user = new User({
+    
+    user = await User.create({
         name,
         email,
         phone,
         password,
         role
+        
+    
     });
 
-    await user.save();
-
-    res.status(201).json({ message: 'User registered successfully' });
+    sendToken("User Registered Successfully!",user,res,200);
 });
 
 export const login = catchAsyncErrors(async (req, res, next) => {
     const { email, password } = req.body;
+    if(!email||!password){
+        return next(new ErrorHandler("Please Provide email and Password!",400));
+    }
+    const user = await User.findOne({email}).select("+password");
+    
+    if(!user){
+        return next(new ErrorHandler("Invalid Credentials!",401));
+    
+    }
+    const isPasswordMatched = await user.comparePassword(password);
 
-    const user = await User.findOne({ email });
-
-    if (!user || !(await user.matchPassword(password))) {
-        return res.status(401).json({ message: 'Invalid email or password' });
+    if(!isPasswordMatched){
+        return next(new ErrorHandler("Invalid Credentials!",401));
     }
 
-    // Create session or token here
 
-    res.status(200).json({ message: 'Logged in successfully' });
+    sendToken("User Logged In Successfully!",user,res,200);
 });
 
 export const logout = catchAsyncErrors(async (req, res, next) => {
