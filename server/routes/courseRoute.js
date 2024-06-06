@@ -1,4 +1,5 @@
-const multer = require("multer");
+// const multer = require("multer");
+import multer from "multer";
 const upload = multer();
 
 const controller = require("../controller/courseController");
