@@ -5,18 +5,24 @@ import './App.css'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import CourseSetupForm from './courseSetup/courseSetup'
 import Home from './components/Home';
+import SignInSide from './pages/signin'
+import SignUp from './pages/signup'
+import ResponsiveAppBar from './components/ResponsiveAppBar'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
     <BrowserRouter>
+      <ResponsiveAppBar/>
       <Routes>
+        
         <Route path="/" element={<Home />} /> 
         <Route path="/course" element={<CourseSetupForm/>}>
       
         </Route>
+        <Route path="/signin" element={<SignInSide />} /> 
+        <Route path="/login" element={<SignUp />} /> 
+
       </Routes>
     </BrowserRouter>
       

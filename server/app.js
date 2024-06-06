@@ -7,8 +7,6 @@ import fileUpload from 'express-fileupload';
 import {ErrorMiddleWare} from "./middlewares/error.js"
 import userRouter from "./routes/userRouter.js"
 
-
-
 const app = express();
 
 dotenv.config({path:"./config/config.env"});
