@@ -59,6 +59,10 @@
   width: 20%;
 }
 
+.catalog button:hover {
+  background-color: rgba(160, 160, 175, 0.5);
+}
+
 .course-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

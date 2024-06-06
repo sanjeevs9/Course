@@ -1,10 +1,16 @@
 import React from 'react';
 import Sidebar from './Sidebar';
 import CourseCard from './CourseCard';
+import { useState } from 'react';
 import './Home.css';
 
 function Home() {
-  
+  const [category, setCategory] = useState('');
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+  };
+
   const courses = [
     {
       title: 'Cinematic Techniques',
@@ -81,10 +87,10 @@ function Home() {
           <button>Teacher mode</button>
         </div>
         <div className="catalog">
-          <button onClick={()=>{}}>Filming</button>
-          <button onClick={()=>{}}>Engineering</button>
-          <button onClick={()=>{}}>Accounting</button>
-          <button onClick={()=>{}}>Photography</button>
+          <button onClick={()=>{setCategory("Filming")}}>Filming</button>
+          <button onClick={()=>{setCategory("Engineering")}}>Engineering</button>
+          <button onClick={()=>{setCategory("Accounting")}}>Accounting</button>
+          <button onClick={()=>{setCategory("Photography")}}>Photography</button>
         </div>
         <div className="course-grid">
           {courses.map((course) => (

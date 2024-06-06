@@ -13,7 +13,10 @@ function CourseCard({ title, category, chapters, progress, price, image, isCompl
             <div className="course-card-progress-bar" style={{ width: `${progress}%` }}></div>
           </div>
           <p>{isComplete ? '100% Complete' : `${progress}% Complete`}</p>
-          {price && <p className="course-card-price">${price}</p>}
+          <div className='buy'>
+            {price && <p className="course-card-price">${price}</p>}
+            <button onClick={()=>{}}>Buy</button>
+          </div>
         </div>
       </div>
     </div>
