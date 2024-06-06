@@ -13,8 +13,9 @@ function App() {
     <>
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Home />} /> 
         <Route path="/course" element={<CourseSetupForm/>}>
-        <Route path="/" element={<Home />} />
+      
         </Route>
       </Routes>
     </BrowserRouter>
