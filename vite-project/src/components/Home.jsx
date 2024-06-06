@@ -4,6 +4,7 @@ import CourseCard from './CourseCard';
 import './Home.css';
 
 function Home() {
+  
   const courses = [
     {
       title: 'Cinematic Techniques',
