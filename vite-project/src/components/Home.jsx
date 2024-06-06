@@ -2,8 +2,10 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import CourseCard from './CourseCard';
 import './Home.css';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const navigate=useNavigate();
   const courses = [
     {
       title: 'Cinematic Techniques',
@@ -85,7 +87,7 @@ function Home() {
       <div className="content">
         <div className="header">
           <input type="text" placeholder="Search for a course" />
-          <button>Teacher mode</button>
+          <button onClick={()=>{navigate("/course")}}>Teacher mode</button>
         </div>
         <hr></hr>
         <div className="catalog">

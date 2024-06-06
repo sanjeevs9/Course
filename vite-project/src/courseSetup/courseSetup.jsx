@@ -1,6 +1,10 @@
 
 
 import React, { useState } from 'react';
+import Sidebar from '../components/Sidebar';
+import SideBar from './SideBar';
+import { useNavigate } from 'react-router-dom';
+import Mux from 
 
 function CourseSetupForm() {
   const [title, setTitle] = useState('');
@@ -9,6 +13,7 @@ function CourseSetupForm() {
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState(0);
   const [video, setVideo] = useState(null);
+  const navigate=useNavigate()
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -50,7 +55,15 @@ function CourseSetupForm() {
   };
 
   return (
+    <div className='flex '>
+        <div className='min-h-screen '>
+            <SideBar/>
+        </div>
+        
     <div className="container mx-auto p-4">
+      <div className=' flex justify-end'>
+      <button className='bg-[#3b82f6] p-2  rounded-md' onClick={()=>{navigate("/")}}>user mode</button>
+      </div>
       <h1 className="text-2xl font-bold mb-4">Course Setup</h1>
 
       <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
@@ -165,6 +178,7 @@ function CourseSetupForm() {
         </button>
       </form>
     </div>
+    </div> 
   );
 }
 
