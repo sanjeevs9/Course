@@ -14,6 +14,10 @@ const courseSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
+    category:{
+        type:String,
+        enum:["Webdevelopement","MobileDevelopment"],
+    },
     ImageUrl:{
         type:String,
         required:true
@@ -22,10 +26,16 @@ const courseSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    lessons: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Lesson'
-    }]
+    videoUrl: {
+        type: String,
+        required: true
+    },
+    price:{
+        type:Number,
+        required:true,
+        default:0.0
+    }
+    
 });
 
 export const Course = mongoose.model("Course", courseSchema);
